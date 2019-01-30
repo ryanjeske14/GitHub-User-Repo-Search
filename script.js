@@ -20,7 +20,10 @@ function getResults(searchTerm) {
             throw new Error(response.statusText);
         })
         .then(responseJson => displayResults(responseJson))
-        .catch(err => $('.results').html(`<p id="js-error-message" class="error-message">Something went wrong: ${err.message}</p>`));      
+        .catch(err => {
+            $('.results').html(`<p id="js-error-message" class="error-message">Something went wrong: ${err.message}</p>`)
+            $('.results').removeClass('hidden');
+        });      
 }
 
 function watchForm() {
